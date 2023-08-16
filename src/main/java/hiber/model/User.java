@@ -17,7 +17,7 @@ public class User {
    @Column(name = "last_name")
    private String lastName;
 
-   @Column(name = "email")
+   @Column(name = "email", unique = true, updatable = false)
    private String email;
 
    @OneToOne(cascade = CascadeType.ALL)
@@ -86,7 +86,7 @@ public class User {
 
    @Override
    public int hashCode() {
-      return Objects.hashCode(id);
+      return Objects.hashCode(email);
    }
 
    @Override
@@ -96,6 +96,6 @@ public class User {
       if (obj == null || getClass() != obj.getClass())
          return false;
       User other = (User) obj;
-      return Objects.equals(id, other.getId());
+      return Objects.equals(email, other.getEmail());
    }
 }
