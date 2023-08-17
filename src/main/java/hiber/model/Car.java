@@ -60,7 +60,7 @@ public class Car {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
+        return id;
     }
 
     @Override
@@ -70,6 +70,7 @@ public class Car {
         if (obj == null || getClass() != obj.getClass())
             return false;
         Car other = (Car) obj;
-        return Objects.equals(id, other.getId());
+        return (id == other.getId()) && model.equals(other.getModel())
+                && (series == other.getSeries());
     }
 }
